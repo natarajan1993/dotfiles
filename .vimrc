@@ -28,6 +28,7 @@ Plugin 'frazrepo/vim-rainbow'
 Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
 "Plugin 'Lokaltog/vim-powerline'
+Plugin 'terryma/vim-multiple-cursors'
 Plugin 'itchyny/lightline.vim'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'ryanoasis/vim-devicons'
@@ -66,6 +67,8 @@ map <C-t><down> :tabl<cr> " C stands for Ctrl so C-t is Ctrl+t
 map <C-t><left> :tabp<cr>
 map <C-t><right> :tabn<cr>
 
+inoremap <C-w> <C-\><C-o>dB " Delete word with ctrl+backspace
+inoremap <C-BS> <C-\><C-o>db
 " Use this block below otherwise alt does not work
 " https://github.com/matze/vim-move/issues/8
 let c='a'
