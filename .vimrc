@@ -28,6 +28,7 @@ Plugin 'frazrepo/vim-rainbow'
 Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
 "Plugin 'Lokaltog/vim-powerline'
+Plugin 'ycm-core/YouCompleteMe'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'itchyny/lightline.vim'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -71,19 +72,26 @@ inoremap <C-w> <C-\><C-o>dB " Delete word with ctrl+backspace
 inoremap <C-BS> <C-\><C-o>db
 " Use this block below otherwise alt does not work
 " https://github.com/matze/vim-move/issues/8
-let c='a'
-while c <= 'z'
-    exec "set <A-".c.">=\e".c
-        exec "imap \e".c." <A-".c.">"
-          let c = nr2char(1+char2nr(c))
-      endw
+"let c='a'
+"while c <= 'z'
+    "exec 'set <A-'.c.">=\e".c
+        "exec 'imap \e'.c." <A-".c.">"
+          "let c = nr2char(1+char2nr(c))
+      "endw
 
-      set timeout ttimeoutlen=10
+      "set timeout ttimeoutlen=10
 " For moving lines (^] is a special character; use <M-k> and <M-j> if it
 " works)
-nnoremap ^]k mz:m-2<CR>`z==
-inoremap ^]j <Esc>:m+<CR>==gi
-inoremap ^]k <Esc>:m-2<CR>==gi
-vnoremap ^]j :m'>+<CR>gv=`<my`>mzgv`yo`z
-nnoremap ^]j mz:m+<CR>`z==
-vnoremap ^]k :m'<-2<CR>gv=`>my`<mzgv`yo`z
+
+"nnoremap <C-S-k> mz:m-2<CR>`z==
+"inoremap <C-S-j> <Esc>:m+<CR>==gi
+"vnoremap <C-S-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
+"inoremap <C-S-k> <Esc>:m-2<CR>==gi
+"nnoremap <C-S-j> mz:m+<CR>`z==
+"vnoremap <C-S-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
