@@ -1,4 +1,4 @@
-set number
+set number relativenumber
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set laststatus=2
@@ -51,7 +51,7 @@ filetype plugin indent on    " required
 			
 syntax on
 autocmd vimenter * NERDTree
-map <C-n> :NERDTreeToggle<CR> " Toggle Nerd Tree plugin
+map <C-S-e> :NERDTreeToggle<CR> " Toggle Nerd Tree plugin
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif "Close vim if the only window left open is a NERDTree
 filetype plugin on "Initialize vim commenter
 let g:rainbow_active = 1 "Initialize vim rainbow
