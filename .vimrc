@@ -29,14 +29,21 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
 "Plugin 'Lokaltog/vim-powerline'
 Plugin 'ycm-core/YouCompleteMe'
+Plugin 'morhetz/gruvbox'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'itchyny/lightline.vim'
+Plugin 'shinchu/lightline-gruvbox.vim'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'tpope/vim-surround'
 Plugin 'matze/vim-move'
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+colorscheme gruvbox
+set background=dark "gruvbox dark
+let g:lightline = {}
+let g:lightline.colorscheme = 'gruvbox'
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
