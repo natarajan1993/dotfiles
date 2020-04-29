@@ -13,8 +13,19 @@ set tabstop=4
 " when indenting with '>', use 4 spaces width
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
-
 set expandtab
+" Set folding to indent.
+" zo opens a fold at the cursor.
+"zShift+o opens all folds at the cursor.
+"zc closes a fold at the cursor.
+"zm increases the foldlevel by one.
+"zShift+m closes all open folds.
+"zr decreases the foldlevel by one.
+"zShift+r decreases the foldlevel to zero -- all folds will be open
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable "Newly opened files aren't all folded up
+set foldlevel=2
 
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -29,6 +40,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
 "Plugin 'Lokaltog/vim-powerline'
 Plugin 'ycm-core/YouCompleteMe'
+Plugin 'Yggdroot/indentLine'
 Plugin 'morhetz/gruvbox'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'itchyny/lightline.vim'
@@ -44,6 +56,7 @@ colorscheme gruvbox
 set background=dark "gruvbox dark
 let g:lightline = {}
 let g:lightline.colorscheme = 'gruvbox'
+let g:indentLine_setColors = 0 " Make indent colors match colorscheme
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
