@@ -27,6 +27,14 @@ set foldnestmax=10
 set nofoldenable "Newly opened files aren't all folded up
 set foldlevel=2
 
+" Remove the default vim status line
+let s:hidden_all = 1
+set noshowmode
+set noruler
+set laststatus=0
+set noshowcmd
+
+
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
