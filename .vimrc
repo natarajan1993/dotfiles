@@ -39,6 +39,10 @@ Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
+"Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ap/vim-css-color'
+Plug 'mattn/emmet-vim'
 call plug#end()
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -84,12 +88,16 @@ let g:indentLine_setColors = 0 " Make indent colors match colorscheme
 " Put your non-Plugin stuff after this line
 			
 syntax on
+au BufRead *.html set filetype=htmlm4
+
 autocmd vimenter * NERDTree
 map <C-S-e> :NERDTreeToggle<CR> " Toggle Nerd Tree plugin
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif "Close vim if the only window left open is a NERDTree
 filetype plugin on "Initialize vim commenter
 let g:rainbow_active = 1 "Initialize vim rainbow
 set backspace=indent,eol,start "Make backspace delete pasted text,etc.
+"let g:Lf_PreviewInPopup = 1 " LeaderF popup mode
+"let g:Lf_ShortcutF = '<C-P>'
 
 "#Better tab experience - from https://webdevetc.com/
 map <leader>tn :tabnew<cr>
@@ -117,20 +125,21 @@ inoremap <C-BS> <C-\><C-o>db
 " For moving lines (^] is a special character; use <M-k> and <M-j> if it
 " works)
 
-"nnoremap <C-S-k> mz:m-2<CR>`z==
-"inoremap <C-S-j> <Esc>:m+<CR>==gi
-"vnoremap <C-S-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
-"inoremap <C-S-k> <Esc>:m-2<CR>==gi
-"nnoremap <C-S-j> mz:m+<CR>`z==
-"vnoremap <C-S-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
+nnoremap <C-S-k> mz:m-2<CR>`z==
+inoremap <C-S-j> <Esc>:m+<CR>==gi
+vnoremap <C-S-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
+inoremap <C-S-k> <Esc>:m-2<CR>==gi
+nnoremap <C-S-j> mz:m+<CR>`z==
+vnoremap <C-S-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
+"nnoremap <A-j> :m .+1<CR>==
+"nnoremap <A-k> :m .-2<CR>==
+"inoremap <A-j> <Esc>:m .+1<CR>==gi
+"inoremap <A-k> <Esc>:m .-2<CR>==gi
+"vnoremap <A-j> :m '>+1<CR>gv=gv
+"vnoremap <A-k> :m '<-2<CR>gv=gv
 
-
+" Emmet config
+let g:user_emmet_leader_key=','
 "____________________________________COC configs__________________________________
 " TextEdit might fail if hidden is not set.
 set hidden
