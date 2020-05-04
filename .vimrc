@@ -39,9 +39,9 @@ Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
-"Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ap/vim-css-color'
+Plug 'matze/vim-move'
 Plug 'mattn/emmet-vim'
 call plug#end()
 call vundle#begin()
@@ -55,9 +55,7 @@ Plugin 'preservim/nerdcommenter'
 Plugin 'frazrepo/vim-rainbow'
 Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
-"Plugin 'Lokaltog/vim-powerline'
 Plugin 'ycm-core/YouCompleteMe'
-"Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'Yggdroot/indentLine'
 Plugin 'morhetz/gruvbox'
 Plugin 'terryma/vim-multiple-cursors'
@@ -66,7 +64,6 @@ Plugin 'shinchu/lightline-gruvbox.vim'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'tpope/vim-surround'
-Plugin 'matze/vim-move'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -75,17 +72,6 @@ set background=dark "gruvbox dark
 let g:lightline = {}
 let g:lightline.colorscheme = 'gruvbox'
 let g:indentLine_setColors = 0 " Make indent colors match colorscheme
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 			
 syntax on
 au BufRead *.html set filetype=htmlm4
@@ -96,9 +82,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 filetype plugin on "Initialize vim commenter
 let g:rainbow_active = 1 "Initialize vim rainbow
 set backspace=indent,eol,start "Make backspace delete pasted text,etc.
-"let g:Lf_PreviewInPopup = 1 " LeaderF popup mode
-"let g:Lf_ShortcutF = '<C-P>'
-
+let g:move_key_modifier = 'C' " vim move key modifier
 "#Better tab experience - from https://webdevetc.com/
 map <leader>tn :tabnew<cr>
 map <leader>t<leader> :tabnext
@@ -112,31 +96,6 @@ map <C-t><right> :tabn<cr>
 
 inoremap <C-w> <C-\><C-o>dB " Delete word with ctrl+backspace
 inoremap <C-BS> <C-\><C-o>db
-" Use this block below otherwise alt does not work
-" https://github.com/matze/vim-move/issues/8
-"let c='a'
-"while c <= 'z'
-    "exec 'set <A-'.c.">=\e".c
-        "exec 'imap \e'.c." <A-".c.">"
-          "let c = nr2char(1+char2nr(c))
-      "endw
-
-      "set timeout ttimeoutlen=10
-" For moving lines (^] is a special character; use <M-k> and <M-j> if it
-" works)
-
-nnoremap <C-S-k> mz:m-2<CR>`z==
-inoremap <C-S-j> <Esc>:m+<CR>==gi
-vnoremap <C-S-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
-inoremap <C-S-k> <Esc>:m-2<CR>==gi
-nnoremap <C-S-j> mz:m+<CR>`z==
-vnoremap <C-S-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
-"nnoremap <A-j> :m .+1<CR>==
-"nnoremap <A-k> :m .-2<CR>==
-"inoremap <A-j> <Esc>:m .+1<CR>==gi
-"inoremap <A-k> <Esc>:m .-2<CR>==gi
-"vnoremap <A-j> :m '>+1<CR>gv=gv
-"vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " Emmet config
 let g:user_emmet_leader_key=','
